@@ -1,0 +1,6 @@
+[API]
+PORT = 8080
+
+[MONGO]
+STRING = mongodb://localhost:27017
+DATABASE = noter
