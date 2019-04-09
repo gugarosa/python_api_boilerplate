@@ -18,8 +18,6 @@ class BaseHandler(tornado.web.RequestHandler):
         # Defining the database object
         self.db = kwargs.get('db')
 
-        print(self.db)
-
     def set_default_headers(self):
         """Sets the default response headers for an incoming request.
 

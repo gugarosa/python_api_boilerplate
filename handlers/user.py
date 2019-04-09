@@ -21,8 +21,10 @@ class UserHandler(BaseHandler):
 
         # Defining the response object
         res = {
-            'name': query.name
+            'id': str(query.id)
         }
+
+        # Need to encode query and serialize with json_util
 
         # Writing back response
         self.write(dict(result=res))
