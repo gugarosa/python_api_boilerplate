@@ -8,6 +8,8 @@ from tornado.web import Application
 from yadm import Database
 
 from handlers.user import UserHandler
+from handlers.login import LoginHandler
+from handlers.register import RegisterHandler
 
 # Enables logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -51,7 +53,9 @@ class Server(Application):
 
         # And also the desired handlers that will handle the requests
         handlers = [
-            (r"/api/users/?(?P<user_id>[^\/]+)?", UserHandler, args)
+            (r'/api/login', LoginHandler, args),
+            (r'/api/register', RegisterHandler, args),
+            (r'/api/users/?(?P<user_id>[^\/]+)?', UserHandler, args)
         ]
 
         # Bootstraping the application class

@@ -10,4 +10,7 @@ class User(Document):
     __collection__ = 'users'
 
     # Defining model attributes
-    name = fields.StringField()
+    username = fields.StringField()
+    password = fields.StringField()
+    key = fields.StringField()
+    token = fields.StringField()

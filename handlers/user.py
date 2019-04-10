@@ -1,3 +1,4 @@
+from decorators.auth import auth
 from handlers.base import BaseHandler
 from models.user import User
 
@@ -8,6 +9,7 @@ class UserHandler(BaseHandler):
 
     """
 
+    @auth()
     def get(self, user_id):
         """It defines the GET request for this handler.
 
