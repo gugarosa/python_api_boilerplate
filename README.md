@@ -35,7 +35,7 @@ Noter's API is based on the following structure, and you should pay attention to
         - register
     - models
         - user
-    - utils
+    - postman
 ```
 
 ### Decorators
@@ -60,9 +60,9 @@ Models are your database structure. You can define single models, relationships 
 
 ```user```: An user model.
 
-### Utils
+### Postman
 
-This is an utilities package. Common things shared across the application should be implemented here. It is better to implement once and use as you wish than re-implementing the same thing over and over again.
+This is where all the Postman's requests are. It will serve as a guide when working with this API. All avaliable requests will be defined here, and we will also provide all the input data needed to work with them.
 
 ---
 
