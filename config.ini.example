@@ -1,5 +1,6 @@
 [API]
 PORT = 8080
+SECRET = 'thisshouldbealongsecret'
 
 [MONGO]
 STRING = mongodb://localhost:27017

@@ -7,9 +7,9 @@ from tornado.ioloop import IOLoop
 from tornado.web import Application
 from yadm import Database
 
-from handlers.user import UserHandler
 from handlers.login import LoginHandler
 from handlers.register import RegisterHandler
+from handlers.user import UserHandler
 
 # Enables logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -26,10 +26,6 @@ config.read('config.ini')
 PORT = config.get('API', 'PORT')
 STRING = config.get('MONGO', 'STRING')
 DB = config.get('MONGO', 'DATABASE')
-
-# Creating an object to hold desired MongoDB database
-client = pymongo.MongoClient(STRING)
-db = Database(client, DB)
 
 
 class Server(Application):
@@ -63,8 +59,17 @@ class Server(Application):
 
 
 if __name__ == '__main__':
+    # Logging initial information
+    logging.info('Trying to connect to database ...')
+
+    # Creating an object to hold desired MongoDB database
+    client = pymongo.MongoClient(STRING)
+    db = Database(client, DB)
+
+    logging.info(f'Database connected: {db}')
+
     # Logging important information
-    logging.debug('Starting server ...')
+    logging.info('Starting server ...')
 
     # Tries to start a tornado webserver
     try:

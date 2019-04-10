@@ -1,8 +1,3 @@
-import base64
-import json
-import jwt
-from datetime import datetime, timedelta
-
 import tornado.web
 
 
@@ -13,7 +8,7 @@ class BaseHandler(tornado.web.RequestHandler):
     """
 
     def initialize(self, **kwargs):
-        """It servers as the basic initializer of every incoming request.
+        """It serves as the basic initializer of every incoming request.
 
         """
 
@@ -47,41 +42,13 @@ class BaseHandler(tornado.web.RequestHandler):
 
         """
 
-        # Gathering authorization token
         try:
+            # Gathering authorization token
             token = self.request.headers.get('Authorization').split(' ')[1]
+
+        # If there is no token in the request
         except:
+            # We apply an empty string as the token
             token = ''
 
         return token
-
-    def check_auth(self, token):
-        """
-        """
-
-        try:
-            #
-            res = json.loads(base64.b64decode(token.split(".")[1]+"==").decode())
-            print(f'Res: {res}')
-
-            #
-            token = jwt.decode(token, self.config.get('API', 'SECRET'), algorithms=['HS256'])
-
-            if token:
-                print(token)
-            else:
-                print('Expired')
-            print(f'Verify: {token}')
-            print(datetime.now())
-            print(datetime.fromtimestamp(token['exp']))
-            if datetime.utcnow() > datetime.fromtimestamp(token['exp']):
-                print('Ok')
-            else:
-                self.set_status(403)
-
-                return False
-            #key = self.cacheServer.get(user)
-            #verify = jwt.decode(token, key, algorithms=["HS256"])
-        except Exception as e:
-            print(e)
-            return False

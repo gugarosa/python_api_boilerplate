@@ -1,11 +1,13 @@
+from bson import ObjectId
+
 from decorators.auth import auth
 from handlers.base import BaseHandler
 from models.user import User
 
 
 class UserHandler(BaseHandler):
-    """An user handler is composed of any related activity according to
-        users-related information in the API.
+    """An user handler defines all the incoming user-related requests
+        that can be processed by the API.
 
     """
 
@@ -19,34 +21,14 @@ class UserHandler(BaseHandler):
         """
 
         # Recovering data from database
-        query = self.db(User).find_one({'name': user_id})
+        query = self.db(User).find_one({'_id': ObjectId(user_id)})
 
         # Defining the response object
         res = {
-            'id': str(query.id)
+            'id': str(query.id),
+            'username': query.username,
+            'email': query.email
         }
 
-        # Need to encode query and serialize with json_util
-
         # Writing back response
-        self.write(dict(result=res))
-
-    def post(self, user_id):
-        """It defines the POST request for this handler.
-
-        Args:
-            user_id (int): The user identifier number.
-
-        """
-
-        # Creating the user object
-        user = User(name=user_id)
-
-        # Inserting into database
-        self.db.insert_one(user)
-
-        # Defining the response object
-        res = 'User inserted with success.'
-
-        # Writing back response
-        self.write(dict(result=res))
+        self.write(dict(success=res))

@@ -1,15 +1,16 @@
-from decorators.auth import auth
+import hashlib
+from datetime import datetime, timedelta
+
+import jwt
+import tornado
+
 from handlers.base import BaseHandler
 from models.user import User
-import tornado
-import hashlib
-import jwt
-from datetime import datetime, timedelta
 
 
 class LoginHandler(BaseHandler):
-    """An user handler is composed of any related activity according to
-        users-related information in the API.
+    """A login handler that defines all the activity prior to the user
+        entering the system.
 
     """
 
@@ -22,34 +23,45 @@ class LoginHandler(BaseHandler):
             # Getting authentication object
             res = tornado.escape.json_decode(self.request.body)
 
-        #
-        except Exception as e:
-            self.write(dict(result=e))
+            # Recovering username
+            username = res['username']
 
-        # Recovering username and password
-        username = res['username']
+            # Encoding password
+            password = hashlib.sha256(res['password'].encode()).hexdigest()
 
-        #
-        password = hashlib.sha256(res['password'].encode()).hexdigest()
-        
-        #
-        query = self.db(User).find_one({'username': username, 'password': str(password)})
+        # If authentication object was not found, reply with an error
+        except:
+            # Setting status to bad request
+            self.set_status(400)
 
-        #
-        if not query:
-            #
-            self.set_status(403)
+            # Writing back an error message
+            self.write(dict(error='Missing either username or password.'))
 
             return False
 
-        data = {
+        # Performing query in database to check if user exists
+        query = self.db(User).find_one(
+            {'username': username, 'password': str(password)})
+
+        # If user does not exists
+        if not query:
+            # Reply with an unauthorized error
+            self.set_status(401)
+
+            # Writing an error message
+            self.write(dict(error='Invalid credentials.'))
+
+            return False
+
+        # Defining the payload to further encode into a token
+        payload = {
             'username': query.username,
             'exp': datetime.utcnow() + timedelta(seconds=3600)
         }
 
-        print(f'Login: {data}')
+        # Encoding payload in a token
+        token = jwt.encode(payload, self.config.get(
+            'API', 'SECRET'), algorithm='HS256')
 
-        encoded = jwt.encode(data, self.config.get('API', 'SECRET'), algorithm='HS256')
-
-        # Writing back response
-        self.write(dict(result=encoded.decode()))
+        # Writing token back
+        self.write(dict(success=token.decode()))

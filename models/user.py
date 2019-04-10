@@ -6,11 +6,14 @@ class User(Document):
     
     """
 
-    # Defining colleciton name
+    # Defines the collection name to be used
     __collection__ = 'users'
 
-    # Defining model attributes
+    # An user needs an username
     username = fields.StringField()
+    
+    # Also, he needs a password
     password = fields.StringField()
-    key = fields.StringField()
-    token = fields.StringField()
+
+    # And finally, an e-mail
+    email = fields.StringField()
