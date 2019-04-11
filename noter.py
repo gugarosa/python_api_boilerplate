@@ -10,6 +10,7 @@ from yadm import Database
 from handlers.login import LoginHandler
 from handlers.register import RegisterHandler
 from handlers.user import UserHandler
+from handlers.sample import SampleHandler
 
 # Enables logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -51,6 +52,8 @@ class Server(Application):
         handlers = [
             (r'/api/login', LoginHandler, args),
             (r'/api/register', RegisterHandler, args),
+            # (r'/api/note/?(?P<sample_id>[^\/]+)?', NoteHandler, args),
+            (r'/api/samples/?(?P<sample_id>[^\/]+)?', SampleHandler, args),
             (r'/api/users/?(?P<user_id>[^\/]+)?', UserHandler, args)
         ]
 
