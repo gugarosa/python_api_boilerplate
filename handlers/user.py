@@ -1,3 +1,6 @@
+import hashlib
+
+import tornado
 from bson import ObjectId
 
 from decorators.auth import auth
@@ -32,3 +35,57 @@ class UserHandler(BaseHandler):
 
         # Writing back response
         self.write(dict(success=res))
+
+    @auth()
+    async def patch(self, user_id):
+        """It defines the PATCH request for this handler.
+
+        Args:
+            user_id (int): The user identifier number.
+
+        """
+
+        try:
+            # Getting authentication object
+            res = tornado.escape.json_decode(self.request.body)
+
+            # Getting username
+            username = res['username']
+
+            # Encoding password
+            password = hashlib.sha256(res['password'].encode()).hexdigest()
+
+            # Also, we need to encode the new password
+            new_password = hashlib.sha256(
+                res['new_password'].encode()).hexdigest()
+
+        # If patching object was not found, reply with an error
+        except:
+            # Setting status to bad request
+            self.set_status(400)
+
+            # Writing back an error message
+            self.write(
+                dict(error='Missing either username, password or new password.'))
+
+            return False
+
+        # Performing query in database to check if user exists
+        query = self.db(User).find_one(
+            {'username': username, 'password': str(password)})
+
+        # If user does not exists
+        if not query:
+            # Reply with a bad request
+            self.set_status(400)
+
+            # Writing an error message
+            self.write(dict(error='Invalid credentials.'))
+
+            return False
+
+        # If everything was correct, we can now update its password
+        self.db.update_one(query, set={'password': new_password})
+
+        # Writing back response
+        self.write(dict(success='Password updated.'))
