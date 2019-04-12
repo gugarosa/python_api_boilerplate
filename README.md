@@ -33,8 +33,10 @@ Noter's API is based on the following structure, and you should pay attention to
         - login
         - user
         - register
+        - sample
     - models
         - user
+        - sample
     - postman
 ```
 
@@ -54,11 +56,15 @@ This is why we are called Noter. This will deal with all the inputs your users c
 
 ```register```: A handler for registering new users.
 
+```sample```: A handler for any sample-related requests.
+
 ### Models
 
 Models are your database structure. You can define single models, relationships and much more! We are using the 'Yet Another Document Mapper' as our ODM. It will make things way easier when working with MongoDB.
 
 ```user```: An user model.
+
+```sample```: An sample model.
 
 ### Postman
 
