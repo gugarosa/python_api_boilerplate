@@ -1,6 +1,7 @@
+import json
+
 import tornado
 from bson import ObjectId
-import json
 
 from decorators.auth import auth
 from handlers.base import BaseHandler
@@ -18,7 +19,10 @@ class SampleHandler(BaseHandler):
         """It defines the GET request for this handler.
 
         Args:
-            sample_id (int): The user identifier number.
+            sample_id (int): The sample identifier number.
+
+        Returns:
+            It will return either 'True' or 'False' along with a 'success' or an 'error' response.
 
         """
 
@@ -37,9 +41,17 @@ class SampleHandler(BaseHandler):
         # Writing back response
         self.write(dict(success=res))
 
+        return True
+
     @auth()
     def post(self, sample_id):
         """It defines the POST request for this handler.
+
+        Args:
+            sample_id (int): The sample identifier number.
+
+        Returns:
+            It will return either 'True' or 'False' along with a 'success' or an 'error' response.
 
         """
 
@@ -71,3 +83,5 @@ class SampleHandler(BaseHandler):
 
         # Writes back the response
         self.write(dict(success='New sample registered.'))
+
+        return True

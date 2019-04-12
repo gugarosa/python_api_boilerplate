@@ -17,6 +17,9 @@ class LoginHandler(BaseHandler):
     async def post(self):
         """It defines the POST request for this handler.
 
+        Returns:
+            It will return either 'True' or 'False' along with a 'success' or an 'error' response.
+
         """
 
         try:
@@ -65,3 +68,5 @@ class LoginHandler(BaseHandler):
 
         # Writing token back
         self.write(dict(success=token.decode()))
+
+        return True

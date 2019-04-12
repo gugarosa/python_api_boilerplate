@@ -21,6 +21,9 @@ class UserHandler(BaseHandler):
         Args:
             user_id (int): The user identifier number.
 
+        Returns:
+            It will return either 'True' or 'False' along with a 'success' or an 'error' response.
+
         """
 
         # Recovering data from database
@@ -36,12 +39,17 @@ class UserHandler(BaseHandler):
         # Writing back response
         self.write(dict(success=res))
 
+        return True
+
     @auth()
-    async def patch(self, user_id):
+    def patch(self, user_id):
         """It defines the PATCH request for this handler.
 
         Args:
             user_id (int): The user identifier number.
+
+        Returns:
+            It will return either 'True' or 'False' along with a 'success' or an 'error' response.
 
         """
 
@@ -89,3 +97,5 @@ class UserHandler(BaseHandler):
 
         # Writing back response
         self.write(dict(success='Password updated.'))
+
+        return True

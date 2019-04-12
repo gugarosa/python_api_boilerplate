@@ -19,6 +19,9 @@ class RegisterHandler(BaseHandler):
     async def post(self):
         """It defines the POST request for this handler.
 
+        Returns:
+            It will return either 'True' or 'False' along with a 'success' or an 'error' response.
+
         """
         
         try:
@@ -55,6 +58,8 @@ class RegisterHandler(BaseHandler):
             # Writes back the response
             self.write(dict(success='New user registered.'))
 
+            return True
+
         # If username is not valid
         else:
             # Sets the status as a bad request
@@ -62,3 +67,5 @@ class RegisterHandler(BaseHandler):
 
             # And replies an error message
             self.write(dict(error='User already exists.'))
+
+            return False
