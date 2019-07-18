@@ -2,7 +2,7 @@
 
 ## Welcome to Noter.
 
-An ideal solution to your annotation needs. Firstly, we are offering this custom API that can be overrided anywhere and anytime. You can define your own handlers and models, but we are offering the basics you will need. From token-based authentication system to multi-user annotation services, we are here to annotate all the data. Please, follow along the next sections in order to learn more about this fantastic tool.
+An ideal solution to your annotation needs. Firstly, we are offering this custom API that can be overridden anywhere and anytime. You can define your handlers and models, but we are offering the basics you will need. From a token-based authentication system to multi-user annotation services, we are here to annotate all the data. Please, follow along the next sections in order to learn more about this fantastic tool.
 
 Noter is compatible with: **Python 3.6+**.
 
@@ -11,7 +11,7 @@ Noter is compatible with: **Python 3.6+**.
 ## Package guidelines
 
 1. The very first information you need is in the very **next** section.
-2. **Installing** is also easy, if you wish to read the code and bump yourself into, just follow along.
+2. **Installing** is also easy if you wish to read the code and bump yourself into, follow along.
 3. Note that there might be some **additional** steps in order to use our solutions.
 4. If there is a problem, please do not **hesitate**, call us.
 
@@ -19,9 +19,9 @@ Noter is compatible with: **Python 3.6+**.
 
 ## Getting started: 60 seconds with Noter
 
-First of all. Code is all commented. Yes, they are commented. Just browse to any file, chose your subpackage and follow it. We have high-level code for most tasks we could think of.
+First of all. Code is all commented. Yes, they are commented. Just browse to any file, chose your subpackage, and follow it. We have high-level code for most tasks we could think of.
 
-Or if you wish to learn even more, please take a minute:
+Alternatively, if you wish to learn even more, please take a minute:
 
 Noter's API is based on the following structure, and you should pay attention to its tree:
 
@@ -42,13 +42,13 @@ Noter's API is based on the following structure, and you should pay attention to
 
 ### Decorators
 
-Essentialy, you can define what you want in the decorators. They work like prior operations to another methods, being instanciated before them.
+Essentially, you can define what you want in the decorators. They work like prior operations to other methods, being instantiated before them.
 
-```auth```: Do you need to protect your resource? If yes, just add this decorator prior to your function and it will check if the incoming token is valid.
+```auth```: Do you need to protect your resource? If yes, add this decorator before your function, and it will check if the incoming token is valid.
 
 ### Handlers
 
-This is why we are called Noter. This will deal with all the inputs your users can perform. Again, you can define whatever your desire.
+This is why we are called Noter. This will deal with all the inputs your users can perform. Again, you can define whatever you desire.
 
 ```login```: An handler for any login request.
 
@@ -60,7 +60,7 @@ This is why we are called Noter. This will deal with all the inputs your users c
 
 ### Models
 
-Models are your database structure. You can define single models, relationships and much more! We are using the 'Yet Another Document Mapper' as our ODM. It will make things way easier when working with MongoDB.
+Models are your database structure. You can define single models, relationships, and much more! We are using the 'Yet Another Document Mapper' as our ODM. It will make things way easier when working with MongoDB.
 
 ```user```: An user model.
 
@@ -68,13 +68,13 @@ Models are your database structure. You can define single models, relationships 
 
 ### Postman
 
-This is where all the Postman's requests are. It will serve as a guide when working with this API. All avaliable requests will be defined here, and we will also provide all the input data needed to work with them.
+This is where all the Postman's requests are. It will serve as a guide when working with this API. All available requests will be defined here, and we will also provide all the input data needed to work with them.
 
 ---
 
 ## Installation
 
-We belive that everything have to be easy. Not difficult or daunting, Noter will be the one-to-go package that you will need, from the very first instalattion to the daily-tasks implementing needs.
+We believe that everything has to be easy. Not tricky or daunting, Noter will be the one-to-go package that you will need, from the very first installation to the daily-tasks implementing needs.
 
 ### Development
 
@@ -108,7 +108,7 @@ Finally, you can start the API:
 python noter.py
 ```
 
-Also, remember that you have to have a instance of MongoDB running. To use it, just open another terminal screen and type:
+Also, remember that you have to have an instance of MongoDB running. To use it, open another terminal screen and type:
 
 ```
 mongod
@@ -116,13 +116,13 @@ mongod
 
 ### Production
 
-We are still working to finish this section.
+We are still working on finishing this section.
 
 ---
 
 ## Environment configuration
 
-Note that sometimes, there is a need for an additional implementation. If needed, from here you will be the one to know all of its details.
+Note that sometimes, there is a need for additional implementation. If needed, from here you will be the one to know all of its details.
 
 ### Ubuntu
 
@@ -140,6 +140,6 @@ No specific additional commands needed.
 
 ## Support
 
-We know that we do our best, but it's inevitable to acknowlodge that we make mistakes. If you every need to report a bug, report a problem, talk to us, please do so! We will be avaliable at our bests at this repository or gth.rosa@uol.com.br.
+We know that we do our best, but it is inevitable to acknowledge that we make mistakes. If you ever need to report a bug, report a problem, talk to us, please do so! We will be available at our bests at this repository or gth.rosa@uol.com.br.
 
 ---
