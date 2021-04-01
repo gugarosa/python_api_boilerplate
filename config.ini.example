@@ -4,4 +4,4 @@ SECRET = 'thisshouldbealongsecret'
 
 [MONGO]
 STRING = mongodb://localhost:27017
-DATABASE = noter
+DATABASE = pythonapi
