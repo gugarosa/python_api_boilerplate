@@ -1,10 +1,10 @@
-# Noter: A Python-Inspired Annotation API
+# Python-API: A Python-based API Boilerplate
 
-## Welcome to Noter.
+## Welcome to Python-API Boilerplate.
 
-An ideal solution to your annotation needs. Firstly, we are offering this custom API that can be overridden anywhere and anytime. You can define your handlers and models, but we are offering the basics you will need. From a token-based authentication system to multi-user annotation services, we are here to annotate all the data. Please, follow along the next sections in order to learn more about this fantastic tool.
+An ideal solution to your boilerplate needs. Firstly, we are offering this custom API that can be overridden anywhere and anytime. You can define your handlers and models, but we are offering the basics you will need. From a token-based authentication system to multi-user annotation services, we are here to speed up all the projects. Please, follow along the next sections in order to learn more about this fantastic tool.
 
-Noter is compatible with: **Python 3.6+**.
+Python-API Boilerplate is compatible with: **Python 3.6+**.
 
 ---
 
@@ -17,16 +17,16 @@ Noter is compatible with: **Python 3.6+**.
 
 ---
 
-## Getting started: 60 seconds with Noter
+## Getting started: 60 seconds with Python-API Boilerplate
 
 First of all. Code is all commented. Yes, they are commented. Just browse to any file, chose your subpackage, and follow it. We have high-level code for most tasks we could think of.
 
 Alternatively, if you wish to learn even more, please take a minute:
 
-Noter's API is based on the following structure, and you should pay attention to its tree:
+Python-API Boilerplate's is based on the following structure, and you should pay attention to its tree:
 
 ```
-- noter-api
+- python-api
     - decorators
         - auth
     - handlers
@@ -48,7 +48,7 @@ Essentially, you can define what you want in the decorators. They work like prio
 
 ### Handlers
 
-This is why we are called Noter. This will deal with all the inputs your users can perform. Again, you can define whatever you desire.
+This is why we are called Python-API Boilerplate. This will deal with all the inputs your users can perform. Again, you can define whatever you desire.
 
 ```login```: An handler for any login request.
 
@@ -74,7 +74,7 @@ This is where all the Postman's requests are. It will serve as a guide when work
 
 ## Installation
 
-We believe that everything has to be easy. Not tricky or daunting, Noter will be the one-to-go package that you will need, from the very first installation to the daily-tasks implementing needs.
+We believe that everything has to be easy. Not tricky or daunting, Python-API Boilerplate will be the one-to-go package that you will need, from the very first installation to the daily-tasks implementing needs.
 
 ### Development
 
@@ -99,13 +99,13 @@ SECRET = 'thisshouldbealongsecret'
 
 [MONGO]
 STRING = mongodb://localhost:27017
-DATABASE = noter
+DATABASE = pythonapi
 ```
 
 Finally, you can start the API:
 
 ```
-python noter.py
+python api.py
 ```
 
 Also, remember that you have to have an instance of MongoDB running. To use it, open another terminal screen and type:
