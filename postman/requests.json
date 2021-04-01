@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "2a14161a-c02a-477c-9716-56e5322cdd56",
-		"name": "Noter",
+		"name": "Python-API Boilerplate",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
